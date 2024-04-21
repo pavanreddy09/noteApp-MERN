@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  height: 70px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+nav h1 {
+  margin-left: 100px;
+}
+
+.profile-info {
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.note-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  margin-top: 20px;
+}
+.note-head {
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.note-head input {
+  height: 20px;
+  width: 250px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 18px;
+  outline: none;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-div button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background-color: green;
+  color: white;
+}
+
+.notes-details {
+  background-color: #eeecec6c;
+  border-radius: 8px;
+  margin-top: 10px;
+  width: 600px;
+}
+
+.notes {
+  max-height: 80px;
+  overflow: hidden;
+  padding: 15px;
+  max-lines: 3;
+  position: relative;
+}
+
+.notes:has(+ .checkbox:not(:checked)):before {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 100%;
+  pointer-events: none;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, white);
+}
+
+.notes-title {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 15px; */
+}
+
+.edit-btn {
+  /* text-decoration: none; */
+  height: 30px;
+  border: none;
+  width: 60px;
+  border-radius: 8px;
+  background-color: blue;
+  color: white;
+  margin-right: 10px;
+  /* padding: 5px; */
+}
+
+.delete-btn {
+  height: 30px;
+  border: none;
+  width: 60px;
+  border-radius: 8px;
+  background-color: red;
+  color: white;
+  margin-right: 10px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.note-content {
+  margin-top: 6px;
+}
+
+.checkbox {
+  appearance: none;
+  border: 1px solid black;
+  cursor: pointer;
+  padding: 0.2rem;
+  margin-left: 520px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+}
+
+.checkbox::before {
+  content: "Expanded";
+}
+
+.checkbox:checked::before {
+  content: "Collapse";
+}
+
+.notes:has(+ .checkbox:checked) {
+  max-height: none;
+}
+
+.ch {
+  display: none;
+}
+
+.form-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 70vh;
+}
+
+.from-container {
+  border-radius: 5px;
+  background-color: #eeecec6c;
+  padding: 20px;
+}
+
+.from-container input,
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.from-container button {
+  /* width: 100%; */
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.notes-list {
+  height: 70vh;
+  overflow-y: auto;
+}
+
+/* .notes-list::-webkit-scrollbar {
+  display: none;
+} */
+
+.no-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+h1 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn-login {
+  width: 100%;
+}
+
+/* .button-group {
+  display: flex;
+}
+p {
+  padding: 14px 20px;
+} */
+
+.logout-btn {
+  border: none;
+  height: 35px;
+  width: 70px;
+  border-radius: 7px;
+  background-color: rgb(234, 234, 234);
+  /* color: white; */
+  font-size: 17px;
+  margin-left: 50px;
+}
+
+.error-msg {
+  background-color: red;
+  /* width: 96%; */
+  padding: 5px;
+  border-radius: 8px;
+  color: white;
+}
+
+.button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
