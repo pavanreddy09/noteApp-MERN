@@ -19,7 +19,7 @@ const LoginForm = () => {
     const password = formData.get("password");
 
     await axios
-      .post("http://localhost:5000/api/user/login", {
+      .post("https://note-app-mern-tau.vercel.app/api/user/login", {
         email: email,
         password: password,
       })
