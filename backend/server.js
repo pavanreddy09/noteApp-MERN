@@ -7,6 +7,12 @@ const userroute = require("./routes/userroutes");
 
 const app = express();
 env.config();
+app.use(express.json());
+app.use(cors({
+  origin:'https://note-app-mern-tau.vercel.app',
+  methods:["GET","POST","PUT","DELETE"]
+  ));
+
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
@@ -16,9 +22,6 @@ mongoose
     });
   })
   .catch((err) => console.error(err));
-
-app.use(express.json());
-app.use(cors());
 
 app.use("/api/notes", notesroute);
 app.use("/api/user", userroute);
