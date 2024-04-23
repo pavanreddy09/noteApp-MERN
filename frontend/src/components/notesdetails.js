@@ -6,6 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 function NotesDetails({ title, content, id, fetchNotes }) {
   const [isOverflow, setIsOverflow] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const heightRef = useRef(null);
 
   const deleteNote = async (id) => {
@@ -13,7 +14,7 @@ function NotesDetails({ title, content, id, fetchNotes }) {
 
     const userInfo = localStorage.getItem("userInfo") || "";
     if (!userInfo) return;
-
+    setIsLoading(true);
     const config = {
       headers: {
         Authorization: `Bearer ${JSON.parse(userInfo).token}`,
@@ -25,9 +26,14 @@ function NotesDetails({ title, content, id, fetchNotes }) {
       .then((res) => {
         alert("Note Deleted!");
         // window.location.href = "/";
+        setIsLoading(false);
         fetchNotes();
       })
-      .catch((err) => console.log(err.response.data.message));
+      .catch((err) =>
+      {
+        setIsLoading(false);
+        console.log(err.response.data.message);
+  });
   };
 
   useEffect(() => {
@@ -45,13 +51,13 @@ function NotesDetails({ title, content, id, fetchNotes }) {
           </div>
           <div className="edit-delete-btn">
             <Link to={`/edit/${id}`}>
-              <button className="edit-btn">
+              <button className="edit-btn" disabled={isLoading}>
                 <EditIcon sx={{ fontSize: "12px", marginRight: "2px" }} />
                 Edit
               </button>
             </Link>
             {/* <Link to={`/edit/${id}`}> */}
-            <button className="delete-btn" onClick={() => deleteNote(id)}>
+            <button className="delete-btn" onClick={() => deleteNote(id)} disabled={isLoading}>
               <DeleteIcon sx={{ fontSize: "12px" }} /> Delete
             </button>
             {/* </Link> */}

@@ -236,7 +236,7 @@ p {
   color: white;
 }
 
-.button:disabled {
+button:disabled {
   background-color: grey;
   cursor: not-allowed;
 }

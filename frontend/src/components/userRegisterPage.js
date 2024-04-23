@@ -51,6 +51,7 @@ function RegisterPage() {
         buttonName={"register"}
         linkto={"/login"}
         errorMessage={errorMessage}
+        isLoading={isLoading}
       />
     </div>
   );

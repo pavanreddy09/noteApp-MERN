@@ -26,8 +26,8 @@ const LoginForm = () => {
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("userInfo", JSON.stringify(res.data));
-        window.location.href = "/";
         setIsLoading(false);
+        window.location.href = "/";
       })
       .catch((err) => {
         setErrorMessage(err.response.data.message);

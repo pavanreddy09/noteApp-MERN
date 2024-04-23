@@ -6,11 +6,13 @@ import axios from "axios";
 export default function Editnote() {
   const { id } = useParams();
   const [note, setNote] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const fetchNote = async () => {
     const userInfo = localStorage.getItem("userInfo") || "";
     if (userInfo) {
+      setIsLoading(true);
       try {
         const config = {
           headers: {
@@ -25,6 +27,8 @@ export default function Editnote() {
         setNote(nt.data);
       } catch (err) {
         alert(err.response.data.message);
+      } finally {
+        setIsLoading(false);
       }
     } else {
       navigate("/login");
@@ -35,6 +39,7 @@ export default function Editnote() {
     e.preventDefault();
     const userInfo = localStorage.getItem("userInfo") || "";
     if (userInfo) {
+      setIsLoading(true);
       const config = {
         headers: {
           Authorization: `Bearer ${JSON.parse(userInfo).token}`,
@@ -44,9 +49,15 @@ export default function Editnote() {
         .put(`http://localhost:5000/api/notes/${id}`, note, config)
         .then((res) => {
           alert("Note has been updated!");
+          setIsLoading(false);
           navigate("/");
         })
-        .catch((err) => alert(err.response.data.message));
+        .catch((err) => {
+
+         alert(err.response.data.message);
+         setIsLoading(false);
+        }
+        );
     }
   };
 
@@ -61,7 +72,7 @@ export default function Editnote() {
         submitFormData={submitFormData}
         formValues={note}
         setFormValues={setNote}
-        isLoading={false}
+        isLoading={isLoading}
       />
     </div>
   );
