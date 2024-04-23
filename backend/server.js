@@ -9,7 +9,7 @@ const app = express();
 env.config();
 app.use(express.json());
 app.use(cors({
-  origin:'https://note-app-mern-tau.vercel.app',
+  origin:'https://note-app-mern-kvo1.vercel.app',
   methods:["GET","POST","PUT","DELETE"]
   ));
 
